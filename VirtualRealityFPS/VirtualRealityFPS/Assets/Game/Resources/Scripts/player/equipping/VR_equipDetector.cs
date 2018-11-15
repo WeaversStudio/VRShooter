@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class VR_equipDetector : MonoBehaviour {
 
-    void Update()
-    {
+    public Transform selectedObject;
 
-    }
-
-    void OnTriggerEnter(Collider equipCollider)
+    void OnTriggerStay(Collider detectedCollision)
     {
-        Debug.Log("check");
+        selectedObject = detectedCollision.gameObject.transform;
     }
 }
