@@ -56,7 +56,7 @@ public class playerLocomotion : MonoBehaviour
         float movementInput_y = 0f; //
 
 
-        ArmSwinger armSwingerComponant = GetComponent<ArmSwinger>();
+        ArmSwinger armSwingerComponant = playerBody.GetComponent<ArmSwinger>();
         armSwingerComponant.enabled = false;
 
         switch (inputManager.controlMode)

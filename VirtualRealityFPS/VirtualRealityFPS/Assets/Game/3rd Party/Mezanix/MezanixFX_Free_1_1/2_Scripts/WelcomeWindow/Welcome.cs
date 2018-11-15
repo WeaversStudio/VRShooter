@@ -62,7 +62,7 @@ public class Welcome : EditorWindow
 
 		if(mezanixLogoTexture == null)
 		{
-			Debug.LogWarning ("Faild to load mezanixLogoTexture");
+			//Debug.LogWarning ("Faild to load mezanixLogoTexture");
 
 			return;
 		}
