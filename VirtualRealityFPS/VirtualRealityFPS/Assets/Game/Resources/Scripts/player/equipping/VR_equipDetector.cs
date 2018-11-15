@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class equipDetector_VR : MonoBehaviour {
+public class VR_equipDetector : MonoBehaviour {
 
     void Update()
     {
