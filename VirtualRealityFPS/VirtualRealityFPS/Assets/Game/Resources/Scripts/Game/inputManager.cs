@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class inputManager : MonoBehaviour {
-
+public class inputManager : MonoBehaviour 
+{
     public enum viewPrefs { Headset, Monitor };
     public enum controlPrefs { KeyboardAndMouse, Joypad, HandControllers };
 

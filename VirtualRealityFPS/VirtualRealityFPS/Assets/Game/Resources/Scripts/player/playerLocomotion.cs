@@ -8,8 +8,8 @@ public class playerLocomotion : MonoBehaviour
     public bool enableMovement = true; //allow player to move and rotate
     public bool enableRotation = true; //
     [Space(10)]
+    public Transform cameraRig;
     public Transform playerHead;
-    public Transform playerBody;
 
     private Vector3 movementVector; //the vector the player is moving
     private Vector3 headAngle; //the angle the player is looking
@@ -56,7 +56,7 @@ public class playerLocomotion : MonoBehaviour
         float movementInput_y = 0f; //
 
 
-        ArmSwinger armSwingerComponant = GetComponent<ArmSwinger>();
+        ArmSwinger armSwingerComponant = cameraRig.GetComponent<ArmSwinger>();
         armSwingerComponant.enabled = false;
 
         switch (inputManager.controlMode)
@@ -82,7 +82,7 @@ public class playerLocomotion : MonoBehaviour
 
     void ApplyMovementInput(Vector2 movementInput) //applies movement input
     {
-        Quaternion playerDirection = Quaternion.Euler(0f, playerBody.eulerAngles.y, 0f); //find what direction the player is facing
+        Quaternion playerDirection = Quaternion.Euler(0f, transform.eulerAngles.y, 0f); //find what direction the player is facing
         movementVector = playerDirection * new Vector3(movementInput.x, 0f, movementInput.y); //set the vector the player will move in
         Vector3.ClampMagnitude(movementVector, 1f); //clamp vector magnitude so movement is never faster than 1
 
@@ -133,7 +133,7 @@ public class playerLocomotion : MonoBehaviour
             headAngle.x = Mathf.Clamp(headAngle.x, 0f, 0f); //clamp rotation axis x to 0 (locks up and down inputs to not effect rotation)
         }
 
-        playerBody.localEulerAngles = bodyAngle;
+        transform.localEulerAngles = bodyAngle;
         playerHead.localEulerAngles = headAngle; //set player head's rotation to the new angle
     }
 }
