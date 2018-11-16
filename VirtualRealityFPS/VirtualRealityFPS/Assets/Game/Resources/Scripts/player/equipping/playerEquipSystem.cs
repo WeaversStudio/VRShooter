@@ -83,7 +83,7 @@ public class playerEquipSystem : MonoBehaviour {
 
             rightHandItem.parent = rightHand;
             rightHandItem.localPosition = rightItemMount.localPosition;
-            rightHandItem.localRotation = rightItemMount.localRotation;
+			rightHandItem.localRotation = rightItemMount.localRotation;
         }
     }
 }

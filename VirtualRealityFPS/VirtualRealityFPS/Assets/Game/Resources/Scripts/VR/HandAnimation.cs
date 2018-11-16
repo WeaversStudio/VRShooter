@@ -20,6 +20,7 @@ public class HandAnimation : MonoBehaviour {
         //if we are pressing grab, set animator bool IsGrabbing to true
         if (trackedcontroller.gripped)
         {
+
             if (!_anim.GetBool("Isgrabbing"))
             {
                 _anim.SetBool("Isgrabbing", true);

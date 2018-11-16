@@ -9,5 +9,6 @@ public class VR_equipDetector : MonoBehaviour {
     void OnTriggerStay(Collider detectedCollision)
     {
         selectedObject = detectedCollision.gameObject.transform;
+
     }
 }
