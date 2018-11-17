@@ -11,26 +11,6 @@ public class playerEquipSystem : MonoBehaviour {
     public Transform rightHandItem;
     [Space(10)]
     public Transform cameraRig;
-	public static bool gunonlefthand;
-	public static bool gunonrighthand;
-	public GameObject[] guns;
-
-
-
-	void Start()
-	{
-		foreach (GameObject gun in guns)
-		{
-			gun.GetComponent<VRShoot> ().enabled = false;
-			gun.GetComponent<Lasergun> ().enabled = false;
-			gun.GetComponent<LineRenderer> ().enabled = false;
-
-		}
-
-	
-		gunonlefthand = false;
-		gunonrighthand = false;
-	}
 
     void Update()
     {
@@ -77,21 +57,14 @@ public class playerEquipSystem : MonoBehaviour {
         Transform leftHandSelection = leftHand.GetComponent<VR_equipDetector>().selectedObject;
         Transform rightHandSelection = rightHand.GetComponent<VR_equipDetector>().selectedObject;
 
-
-
-
         if (leftHandProperties.gripped)
         {
             leftHandItem = leftHandSelection;
-
-
-
         }
 
         if (rightHandProperties.gripped)
         {
             rightHandItem = rightHandSelection;
-
         }
 
 
@@ -102,23 +75,6 @@ public class playerEquipSystem : MonoBehaviour {
             leftHandItem.parent = leftHand;
             leftHandItem.localPosition = leftItemMount.localPosition;
             leftHandItem.localRotation = leftItemMount.localRotation;
-			gunonlefthand = true;
-			if (leftHand.GetComponent<VR_equipDetector> ().nameofthegun == guns [0].name) 
-			{
-				guns [0].GetComponent<VRShoot> ().enabled = true;
-				guns [0].GetComponent<Lasergun> ().enabled = true;
-				guns [0].GetComponent<LineRenderer> ().enabled = true;
-
-			}
-			if(leftHand.GetComponent<VR_equipDetector> ().nameofthegun == guns [1].name) 
-			{
-				guns [1].GetComponent<VRShoot> ().enabled = true;
-				guns [1].GetComponent<Lasergun> ().enabled = true;
-				guns [1].GetComponent<LineRenderer> ().enabled = true;
-
-			}
-		
-
         }
 
         if (rightHandItem)
@@ -128,23 +84,6 @@ public class playerEquipSystem : MonoBehaviour {
             rightHandItem.parent = rightHand;
             rightHandItem.localPosition = rightItemMount.localPosition;
 			rightHandItem.localRotation = rightItemMount.localRotation;
-			gunonrighthand = true;
-			if (rightHand.GetComponent<VR_equipDetector> ().nameofthegun == guns [0].name) 
-			{
-				guns [0].GetComponent<VRShoot> ().enabled = true;
-				guns [0].GetComponent<Lasergun> ().enabled = true;
-				guns [0].GetComponent<LineRenderer> ().enabled = true;
-
-			}
-			if(rightHand.GetComponent<VR_equipDetector> ().nameofthegun == guns [1].name) 
-			{
-				guns [1].GetComponent<VRShoot> ().enabled = true;
-				guns [1].GetComponent<Lasergun> ().enabled = true;
-				guns [0].GetComponent<LineRenderer> ().enabled = true;
-
-			}
-
-
-		}
+        }
     }
 }
