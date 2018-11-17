@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 m_EditorVersion: 2018.2.16f1
 =======
 m_EditorVersion: 2018.2.15f1
@@ -8,6 +9,9 @@ m_EditorVersion: 2018.2.15f1
 =======
 m_EditorVersion: 2018.2.16f1
 >>>>>>> update
+=======
+m_EditorVersion: 2018.2.15f1
+>>>>>>> parent of 79e52da... Improved Gun mechanics and shooting
 =======
 m_EditorVersion: 2018.2.15f1
 >>>>>>> parent of 79e52da... Improved Gun mechanics and shooting
