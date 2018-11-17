@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itemHandler : MonoBehaviour 
-{
-	
-    public Transform gripMount;
+public class itemHandler : MonoBehaviour {
 
+    public Transform gripMount;
 }
