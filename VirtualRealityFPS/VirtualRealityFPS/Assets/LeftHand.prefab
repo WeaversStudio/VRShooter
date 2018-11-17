@@ -886,6 +886,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 0}
+<<<<<<< HEAD
+=======
+  nameofthegun: 
+>>>>>>> parent of 6b834af... Unity Updated to 2018.2.16f1
 --- !u!135 &135331810047844710
 SphereCollider:
   m_ObjectHideFlags: 1

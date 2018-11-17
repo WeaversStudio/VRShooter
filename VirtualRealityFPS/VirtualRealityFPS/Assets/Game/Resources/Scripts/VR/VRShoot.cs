@@ -19,6 +19,7 @@ public class VRShoot : MonoBehaviour {
 
 
 
+
 	[Header("BulletParticleSystemSetting")]
 	public GameObject bulletparticlesystem;
 	public List<GameObject> bulletparticlepool;
