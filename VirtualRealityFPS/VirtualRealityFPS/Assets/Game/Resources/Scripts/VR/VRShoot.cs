@@ -7,6 +7,7 @@ using UnityEngine.XR;
 public class VRShoot : MonoBehaviour {
 
 
+<<<<<<< HEAD
 	public static VRShoot instance;
 	[Header("Decals Setting")]
 	public GameObject decals;
@@ -30,6 +31,9 @@ public class VRShoot : MonoBehaviour {
 
 <<<<<<< HEAD
 =======
+=======
+
+>>>>>>> parent of 79e52da... Improved Gun mechanics and shooting
 	public Transform rayorigin;
 
 
@@ -164,10 +168,14 @@ public class VRShoot : MonoBehaviour {
 	{
 		RaycastHit hit;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (Physics.Raycast (transform.position,transform.up, out hit, 100f, mask)) 
 =======
 		if (Physics.Raycast (rayorigin.position,-rayorigin.forward, out hit, 100f, mask)) 
 >>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972
+=======
+		if (Physics.Raycast (rayorigin.position,-rayorigin.forward, out hit, 100f, mask)) 
+>>>>>>> parent of 79e52da... Improved Gun mechanics and shooting
 		{
 			//Destroy (hit.transform.gameObject);
 			if (ammomanger.Magzinecapacity > 0) 

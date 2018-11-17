@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 401ae649b1eada944aec72c57ba14a24
+guid: 9cfa3957744a67547a0728b25132598f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -68,7 +68,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: default3
-    second: {fileID: 2100000, guid: ae0625d6432c03e41bed22bd0febd91d, type: 2}
+    second: {fileID: 2100000, guid: 17487dd0d2e788b4987d4576426c8002, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -119,7 +119,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.012499999
+    previousCalculatedGlobalScale: 0.011499999
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
@@ -140,7 +140,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
