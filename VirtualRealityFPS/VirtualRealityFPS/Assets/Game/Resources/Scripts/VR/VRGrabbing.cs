@@ -61,6 +61,7 @@ public class VRGrabbing : MonoBehaviour
 				vrshoot.enabled = true;
 				Destroy (col.gameObject);
 				havegun = true;
+				AudioManager.PlayAudio ("Grab");
 			}
 		} 
 
@@ -69,11 +70,11 @@ public class VRGrabbing : MonoBehaviour
 			render.sharedMaterial = handcoloronselect;
 			if (trackedcontroller.gripped && M4.activeInHierarchy) 
 			{
-				
-
 				Destroy (col.gameObject);
 				Lefthand.SetActive (false);
 				handwithmagzine.SetActive (true);
+				AudioManager.PlayAudio ("Grab");
+
 
 			} else 
 			{

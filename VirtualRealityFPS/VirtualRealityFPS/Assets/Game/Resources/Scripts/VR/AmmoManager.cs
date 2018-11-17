@@ -16,6 +16,7 @@ public class AmmoManager : MonoBehaviour
 	public GameObject lefthandwithmagzine;
 	public GameObject lefthandwithmagzineused;
 	public TextMesh Reloadmessage;
+	public static bool canreload;
 
 
 	// Use this for initialization
@@ -37,29 +38,32 @@ public class AmmoManager : MonoBehaviour
 		{
 			Magzinecapacity--;
 		}
-		if (Magzinecapacity == 0 && ammo > 30) 
-		{
-			Reloadmessage.text = "You gotta reload";
-		}
-		if (Magzinecapacity != 0 && ammo != 0) 
+
+		if (Magzinecapacity != 0) 
 		{
 			Reloadmessage.text = "";
 
 		}
 
-		if (Magzinecapacity == 0 && ammo <= 30 && ammo > 0) 
+		if (Magzinecapacity == 0) 
 		{
 			Reloadmessage.text = "You gotta reload";
 		}
 
-		if (ammo == 0 && Magzinecapacity == 0) 
+		if (ammo == 0 && Magzinecapacity == 0) {
+			canreload = false;
+			Debug.Log ("Get Some ammo");
+		} else 
 		{
+			canreload = true;
 
-			Debug.Log("Get Some ammo");
 		}
 		if (trackedcontroller.gripped)
 		{
-			lefthandwithmagzineused.SetActive (true);
+			if (canreload == true) 
+			{
+				lefthandwithmagzineused.SetActive (true);
+			}
 		}
 	}
 
@@ -78,9 +82,16 @@ public class AmmoManager : MonoBehaviour
 		
 	public void Reload()
 	{
-		int ammotobefull = 30 - Magzinecapacity;
-		Magzinecapacity += ammotobefull;
-		ammo -= ammotobefull;
+		if (Magzinecapacity + ammo >= 30) {
+			int ammotobefull = 30 - Magzinecapacity;
+			Magzinecapacity += ammotobefull;
+			ammo -= ammotobefull;
+		} else 
+		{
+			Magzinecapacity += ammo;
+			ammo -= ammo;
+
+		}
 	}
 
 }

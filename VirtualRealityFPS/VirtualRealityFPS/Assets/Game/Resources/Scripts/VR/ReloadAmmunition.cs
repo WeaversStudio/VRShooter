@@ -24,6 +24,7 @@ public class ReloadAmmunition : MonoBehaviour {
 			ammomanger.ammo += 30;
 			lefthandwithmagzine.SetActive (false);
 			lefthand.SetActive (true);
+			AudioManager.PlayAudio ("Reload");
 
 		}
 			

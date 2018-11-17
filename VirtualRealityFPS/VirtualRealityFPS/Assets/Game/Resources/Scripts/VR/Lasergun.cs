@@ -33,8 +33,6 @@ public class Lasergun : MonoBehaviour {
 			ray.direction = transform.up;
 			laser.SetPosition (0, transform.position+laseroffset);
 			laser.SetPosition (1, ray.origin + ray.direction * hit.distance);
-			Debug.DrawRay (transform.position, transform.up, Color.blue);
-
 
 		} else
 		{

@@ -20,6 +20,8 @@ public class ReloadUsedAmmo : MonoBehaviour {
 		{
 			ammomanger.Reload ();
 			lefthandmagzineused.SetActive (false);
+			AudioManager.PlayAudio ("Reload");
+
 		}
 
 	}

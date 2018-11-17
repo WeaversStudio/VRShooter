@@ -6,33 +6,95 @@ using UnityEngine.UI;
 public class VRShoot : MonoBehaviour {
 
 
+	public static VRShoot instance;
+	[Header("Decals Setting")]
+	public GameObject decals;
+	public List<GameObject> decalspool;
+	public int decalpoolcount;
 
+
+
+
+	[Header("BulletParticleSystemSetting")]
+	public GameObject bulletparticlesystem;
+	public List<GameObject> bulletparticlepool;
+	public int bulletpoolcount;
+
+
+
+	[Header("SmokeSetting")]
+	public GameObject smoke;
+	public List<GameObject> smokepool;
+	public int smokepoolcount;
+
+
+
+	public Transform guntip;
 	private SteamVR_TrackedController trackcontroller;
 	public SteamVR_Controller.Device controller;
 	private SteamVR_TrackedObject trackedobject;
 	private GameObject m4;
-	public GameObject decals;
+
+
 	public static bool isshooting;
 	[SerializeField]
 	private LayerMask mask;
-	public AmmoManager ammomanger;
-	private Vector3 rayoffset = new Vector3(0.1f,0.1f,0);
 
-	void Awake()
+	public AmmoManager ammomanger;
+
+
+
+	private Vector3 smokeoffset = new Vector3(0,0,0.1f);
+
+
+	void Start()
 	{
 
-		trackedobject = GetComponent<SteamVR_TrackedObject> ();
-		trackcontroller = GetComponent<SteamVR_TrackedController> ();
+		//StartCoroutine ("decaltimewait");
+
+
+	}
+	void Awake()
+	{
+		if (instance == null) 
+		{
+			instance = this;
+		}
+		trackedobject = GetComponentInParent<SteamVR_TrackedObject> ();
+		trackcontroller = GetComponentInParent<SteamVR_TrackedController> ();
+		decalspool = new List<GameObject> ();
+		for (int i = 0; i < decalpoolcount; i++) 
+		{
+			GameObject decalobj = Instantiate (decals);
+			decalobj.SetActive (false);
+			decalspool.Add (decalobj);
+
+		}
+		for (int i = 0; i < bulletpoolcount; i++) 
+		{
+			GameObject bulletobj = Instantiate (bulletparticlesystem);
+			bulletobj.SetActive (false);
+			bulletparticlepool.Add (bulletobj);
+
+		}
+		for (int i = 0; i < smokepoolcount; i++) 
+		{
+			GameObject smokeobj = Instantiate (smoke);
+			smokeobj.SetActive (false);
+			smokepool.Add(smokeobj);
+
+		}
 	}
 	void Update () 
 	{
+		
 		controller = SteamVR_Controller.Input ((int)trackedobject.index);
 
 
 		//Single Shot 
 		if (controller.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
 			Shoot ();
-			isshooting = true;
+
 			//controller.TriggerHapticPulse (500);
 		}
 			//Burst Shot 
@@ -49,21 +111,83 @@ public class VRShoot : MonoBehaviour {
 
 	}
 
-	void Shoot()
+      void Shoot()
 	{
 		RaycastHit hit;
-		if (Physics.Raycast (transform.position+rayoffset,-transform.up, out hit, 100f, mask)) 
+		if (Physics.Raycast (transform.position,transform.up, out hit, 100f, mask)) 
 		{
-			Debug.DrawRay (transform.position, -transform.up,Color.red);
 			//Destroy (hit.transform.gameObject);
-
 			if (ammomanger.Magzinecapacity > 0) 
 			{
-				GameObject Decalsused = Instantiate (decals);
-				decals.transform.position = hit.point;
-				decals.transform.rotation = Quaternion.FromToRotation (Vector3.back, hit.normal);
-				Destroy (Decalsused, 5f);
+				GameObject Decalsused = GetDecalsofpool();
+				Decalsused.transform.position = hit.point;
+				Decalsused.transform.rotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
+				Decalsused.SetActive (true);
+				if (Decalsused == null)
+				{
+					return;
+				}
+				GameObject bullet = GetBulletfromparticlesofpool ();
+				bullet.transform.position = guntip.position;
+				bullet.SetActive (true);
+				if (bullet == null)
+				{
+					return;
+				}
+				isshooting = true;
+				//controller.TriggerHapticPulse (1000);
+				GameObject usedsmoke = GetSmokefromPool ();
+				usedsmoke.transform.position = guntip.position + smokeoffset;
+				usedsmoke.SetActive (true);
+				if (usedsmoke == null)
+				{
+					return;
+				}
+				AudioManager.PlayAudio ("Shoot");
 			}
 		}
 	}
+
+
+	public GameObject GetDecalsofpool()
+	{
+		for (int i = 0; i < decalspool.Count; i++) 
+		{
+			if (decalspool [i].activeInHierarchy == false) 
+			{
+				return decalspool [i];
+			} 
+		}
+		return null;
+	}
+		
+
+	public GameObject GetBulletfromparticlesofpool()
+	{
+		for (int i = 0; i < bulletparticlepool.Count; i++) 
+		{
+			if (bulletparticlepool [i].activeInHierarchy == false) 
+			{
+				return bulletparticlepool[i];
+			}
+		}
+
+		return null;
+	}
+
+
+
+	public GameObject GetSmokefromPool()
+	{
+		for (int i = 0; i < smokepool.Count; i++) 
+		{
+			if (smokepool [i].activeInHierarchy == false) 
+			{
+				return smokepool [i];
+			}
+		}
+
+		return null;
+	}
+		
 }

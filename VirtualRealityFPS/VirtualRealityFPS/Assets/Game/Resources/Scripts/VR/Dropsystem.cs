@@ -11,6 +11,7 @@ public class Dropsystem : MonoBehaviour {
 	public GameObject M4;
 	private SteamVR_TrackedController trackedcontroller;
 	public Material handcolor;
+	public GameObject lefthandMagzineused;
 
 	private VRGrabbing vrgrabbing;
 
@@ -35,6 +36,7 @@ public class Dropsystem : MonoBehaviour {
 			{
 				spawngunonce = true;
 				righthand.SetActive (true);
+				lefthandMagzineused.SetActive (false);
 
 				lefthand.SetActive (true);
 				if (spawngunonce == true) 
