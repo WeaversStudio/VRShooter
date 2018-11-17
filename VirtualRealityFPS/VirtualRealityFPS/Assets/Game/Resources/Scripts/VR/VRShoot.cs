@@ -99,10 +99,9 @@ public class VRShoot : MonoBehaviour {
 
 
 		//Single Shot 
-		if (controller.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
-			Shoot ();
-
-			//controller.TriggerHapticPulse (500);
+		if (controller.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger))
+		{
+			Shoot ();//controller.TriggerHapticPulse (500);
 		}
 			//Burst Shot 
 		/*if (trackcontroller.triggerPressed)) 
@@ -110,7 +109,6 @@ public class VRShoot : MonoBehaviour {
 			Shoot ();
 		}
         */
-
 		else 
 		{
 			isshooting = false;
