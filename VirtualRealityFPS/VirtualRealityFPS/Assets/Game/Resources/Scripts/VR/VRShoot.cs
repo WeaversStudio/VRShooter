@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class VRShoot : MonoBehaviour {
 
@@ -27,6 +28,35 @@ public class VRShoot : MonoBehaviour {
 	public List<GameObject> smokepool;
 	public int smokepoolcount;
 
+<<<<<<< HEAD
+=======
+	public Transform rayorigin;
+
+
+
+
+	public static VRShoot instance;
+	[Header("Decals Setting")]
+	public GameObject decals;
+	public List<GameObject> decalspool;
+	public int decalpoolcount;
+
+
+
+
+	[Header("BulletParticleSystemSetting")]
+	public GameObject bulletparticlesystem;
+	public List<GameObject> bulletparticlepool;
+	public int bulletpoolcount;
+
+
+
+	[Header("SmokeSetting")]
+	public GameObject smoke;
+	public List<GameObject> smokepool;
+	public int smokepoolcount;
+
+>>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972
 
 
 	public Transform guntip;
@@ -68,6 +98,7 @@ public class VRShoot : MonoBehaviour {
 			GameObject decalobj = Instantiate (decals);
 			decalobj.SetActive (false);
 			decalspool.Add (decalobj);
+<<<<<<< HEAD
 
 		}
 		for (int i = 0; i < bulletpoolcount; i++) 
@@ -84,6 +115,24 @@ public class VRShoot : MonoBehaviour {
 			smokepool.Add(smokeobj);
 
 		}
+=======
+
+		}
+		for (int i = 0; i < bulletpoolcount; i++) 
+		{
+			GameObject bulletobj = Instantiate (bulletparticlesystem);
+			bulletobj.SetActive (false);
+			bulletparticlepool.Add (bulletobj);
+
+		}
+		for (int i = 0; i < smokepoolcount; i++) 
+		{
+			GameObject smokeobj = Instantiate (smoke);
+			smokeobj.SetActive (false);
+			smokepool.Add(smokeobj);
+
+		}
+>>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972
 	}
 	void Update () 
 	{
@@ -114,7 +163,11 @@ public class VRShoot : MonoBehaviour {
       void Shoot()
 	{
 		RaycastHit hit;
+<<<<<<< HEAD
 		if (Physics.Raycast (transform.position,transform.up, out hit, 100f, mask)) 
+=======
+		if (Physics.Raycast (rayorigin.position,-rayorigin.forward, out hit, 100f, mask)) 
+>>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972
 		{
 			//Destroy (hit.transform.gameObject);
 			if (ammomanger.Magzinecapacity > 0) 
@@ -169,6 +222,8 @@ public class VRShoot : MonoBehaviour {
 			if (bulletparticlepool [i].activeInHierarchy == false) 
 			{
 				return bulletparticlepool[i];
+<<<<<<< HEAD
+=======
 			}
 		}
 
@@ -184,10 +239,29 @@ public class VRShoot : MonoBehaviour {
 			if (smokepool [i].activeInHierarchy == false) 
 			{
 				return smokepool [i];
+>>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972
 			}
 		}
 
 		return null;
+<<<<<<< HEAD
+	}
+
+
+
+	public GameObject GetSmokefromPool()
+	{
+		for (int i = 0; i < smokepool.Count; i++) 
+		{
+			if (smokepool [i].activeInHierarchy == false) 
+			{
+				return smokepool [i];
+			}
+		}
+
+		return null;
+=======
+>>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972
 	}
 		
 }

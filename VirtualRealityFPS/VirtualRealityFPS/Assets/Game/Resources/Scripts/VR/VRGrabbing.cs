@@ -23,7 +23,6 @@ public class VRGrabbing : MonoBehaviour
 	public  Renderer render;
 
 
-     public VRShoot vrshoot;
 
 
 	public static bool havegun;
@@ -58,7 +57,6 @@ public class VRGrabbing : MonoBehaviour
 				Righthand.SetActive (false);
 				Lefthand.SetActive (false);
 				M4.SetActive (true);
-				vrshoot.enabled = true;
 				Destroy (col.gameObject);
 				havegun = true;
 				AudioManager.PlayAudio ("Grab");

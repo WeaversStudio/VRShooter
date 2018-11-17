@@ -1,1 +1,21 @@
+<<<<<<< HEAD
 m_EditorVersion: 2018.2.1f1
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+m_EditorVersion: 2018.2.16f1
+=======
+m_EditorVersion: 2018.2.15f1
+>>>>>>> 82777c6b57bc80b580353b553e4645378c2950e2
+=======
+m_EditorVersion: 2018.2.16f1
+>>>>>>> update
+=======
+m_EditorVersion: 2018.2.15f1
+>>>>>>> parent of 79e52da... Improved Gun mechanics and shooting
+=======
+m_EditorVersion: 2018.2.15f1
+>>>>>>> parent of 79e52da... Improved Gun mechanics and shooting
+>>>>>>> 7a2985b3cdca5662237f8fd41940c9c2a0da3972

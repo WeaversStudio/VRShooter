@@ -17,22 +17,22 @@ public class HandAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		//if we are pressing grab, set animator bool IsGrabbing to true
-		if(trackedcontroller.gripped)
-		{
-			if (!_anim.GetBool("Isgrabbing"))
-			{
-				_anim.SetBool("Isgrabbing", true);
-			}
-		}
-		else
-		{
-			//if we let go of grab, set IsGrabbing to false
-			if(_anim.GetBool("Isgrabbing"))
-			{
-				_anim.SetBool("Isgrabbing", false);
-			}
-		}
+        //if we are pressing grab, set animator bool IsGrabbing to true
+        if (trackedcontroller.gripped)
+        {
 
-	}
+            if (!_anim.GetBool("Isgrabbing"))
+            {
+                _anim.SetBool("Isgrabbing", true);
+            }
+        }
+        else
+        {
+            //if we let go of grab, set IsGrabbing to false
+            if (_anim.GetBool("Isgrabbing"))
+            {
+                _anim.SetBool("Isgrabbing", false);
+            }
+        }
+    }
 }
