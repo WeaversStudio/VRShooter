@@ -29,17 +29,17 @@ public class Lasergun : MonoBehaviour {
 	{
 		
 		RaycastHit hit;
-		if (Physics.Raycast(rayorigin.position, -rayorigin.forward, out hit, 50f,mask))
+		if (Physics.Raycast(rayorigin.position, rayorigin.forward, out hit, 50f,mask))
 		{
 			ray.origin = rayorigin.position;
-			ray.direction = -rayorigin.forward;
+			ray.direction = rayorigin.forward;
 			laser.SetPosition (0, rayorigin.position+laseroffset);
 			laser.SetPosition (1,rayorigin.position + ray.direction * hit.distance);
 
 		} else
 		{
 			ray.origin = rayorigin.position;
-			ray.direction = -rayorigin.forward;
+			ray.direction = rayorigin.forward;
 			laser.SetPosition (0, rayorigin.position+laseroffset);
 			laser.SetPosition (1, rayorigin.position + ray.direction * laserlimit);
 
