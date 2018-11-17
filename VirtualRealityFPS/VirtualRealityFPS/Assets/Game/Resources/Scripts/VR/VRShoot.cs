@@ -7,18 +7,15 @@ using UnityEngine.XR;
 public class VRShoot : MonoBehaviour {
 
 
-
 	public Transform rayorigin;
-
-
-
+	public Transform handcontrollerright;
+	public Transform handcontrollerleft;
 
 	public static VRShoot instance;
 	[Header("Decals Setting")]
 	public GameObject decals;
 	public List<GameObject> decalspool;
 	public int decalpoolcount;
-
 
 
 
@@ -47,7 +44,7 @@ public class VRShoot : MonoBehaviour {
 	[SerializeField]
 	private LayerMask mask;
 
-	public AmmoManager ammomanger;
+	//public AmmoManager ammomanger;
 
 
 
@@ -57,18 +54,24 @@ public class VRShoot : MonoBehaviour {
 	void Start()
 	{
 
-		//StartCoroutine ("decaltimewait");
-
 
 	}
+
+
 	void Awake()
-	{
+		{
 		if (instance == null) 
 		{
 			instance = this;
 		}
-		trackedobject = GetComponentInParent<SteamVR_TrackedObject> ();
+
+
 		trackcontroller = GetComponentInParent<SteamVR_TrackedController> ();
+		trackedobject =  GetComponentInParent<SteamVR_TrackedObject> ();
+
+
+	
+
 		decalspool = new List<GameObject> ();
 		for (int i = 0; i < decalpoolcount; i++) 
 		{
@@ -95,13 +98,21 @@ public class VRShoot : MonoBehaviour {
 	void Update () 
 	{
 		
+
 		controller = SteamVR_Controller.Input ((int)trackedobject.index);
 
 
+
 		//Single Shot 
-		if (controller.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger))
+		if (controller.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger) && playerEquipSystem.gunonlefthand == true)
 		{
-			Shoot ();//controller.TriggerHapticPulse (500);
+			Shoot ();	
+			//controller.TriggerHapticPulse (500);
+		}
+		if (controller.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger) && playerEquipSystem.gunonrighthand == true) 
+		{
+			Shoot ();
+	
 		}
 			//Burst Shot 
 		/*if (trackcontroller.triggerPressed)) 
@@ -109,6 +120,7 @@ public class VRShoot : MonoBehaviour {
 			Shoot ();
 		}
         */
+
 		else 
 		{
 			isshooting = false;
@@ -119,11 +131,11 @@ public class VRShoot : MonoBehaviour {
       void Shoot()
 	{
 		RaycastHit hit;
-		if (Physics.Raycast (rayorigin.position,-rayorigin.forward, out hit, 100f, mask)) 
+		if (Physics.Raycast (rayorigin.position,rayorigin.forward, out hit, 100f, mask)) 
 		{
 			//Destroy (hit.transform.gameObject);
-			if (ammomanger.Magzinecapacity > 0) 
-			{
+			//if (ammomanger.Magzinecapacity > 0) 
+			//{
 				GameObject Decalsused = GetDecalsofpool();
 				Decalsused.transform.position = hit.point;
 				Decalsused.transform.rotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
@@ -149,7 +161,7 @@ public class VRShoot : MonoBehaviour {
 					return;
 				}
 				AudioManager.PlayAudio ("Shoot");
-			}
+			//}
 		}
 	}
 
